@@ -8,15 +8,25 @@
   doesn’t include a native class implementation.
 */
 
-var Class = function(){
+var Class = function(parent){
   var klass = function(){
     this.init.apply(this, arguments);
+  };
+
+  // Inherited methods from parent class
+  if (parent) {
+    var subclass = function() { };
+    subclass.prototype = parent.prototype;
+    klass.prototype = new subclass;
   };
 
   klass.prototype.init = function(){};
 
   // Shortcut to access prototype
   klass.fn = klass.prototype;
+
+  // Shortcut for super class
+  klass._super = klass.__proto__;
 
   // Shortcut to access class
   klass.fn.parent = klass;
