@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>App Tests</title>
+    <link rel="stylesheet" href="spec/jasmine/jasmine.css">
+
+    <script src="spec/jasmine/jasmine.js"></script>
+    <script src="spec/jasmine/jasmine-html.js"></script>
+
+    <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <script src="orm.js"></script>
+    <script src="spec/create-model.js"></script>
+    <script src="spec/extend-model.js"></script>
+  </head>
+
+  <body id="suite">
+    <script>
+      jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+      jasmine.getEnv().execute();
+    </script>
+  </body>
+</html>

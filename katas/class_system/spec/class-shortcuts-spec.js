@@ -1,7 +1,7 @@
 describe("Class shortcuts", function() {
   var User, user;
-  beforeEach(function(){ 
-    User = new Class; 
+  beforeEach(function(){
+    User = new Class;
     user = new User;
   })
   it("fn should be a shorcut for the prototype", function() {
