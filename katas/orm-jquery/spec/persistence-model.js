@@ -1,40 +1,34 @@
-describe("Persistence", function() {
+describe("Persistence", function(){
   var User;
   beforeEach(function(){
     User = Model.create();
   })
 
   describe("Class", function(){
-    it("should be empty", function() {
-      expect(User.records).toBeDefined();
-      expect(User.records).toEqual({});
-    });
+    it("should be empty", function(){ expect(User.records).toEqual({}); });
   })
 
   describe("Instance", function(){
     var user;
-    beforeEach(function(){
-      user = User.init();
-    })
+    beforeEach(function(){ user = User.init({ name:"John Doe" }); })
+
+    it("should be a new record", function(){ expect(user.newRecord).toBe(true); });
 
     describe("#create", function(){
       beforeEach(function(){ user.create(); })
-      it("should have an id", function() {
-        expect(user.id).toBeDefined();
-      });
-
-      it("should respond to create", function(){
-        expect(user.create).toBeDefined();
-      })
-
-      it("should add a record", function(){
-        expect(User.records).not.toEqual({});
-      })
+      it("should have an id",          function(){ expect(user.id).toBeDefined(); });
+      it("should respond to create",   function(){ expect(user.create).toBeDefined(); })
+      it("should add a record",        function(){ expect(User.records).not.toEqual({});})
+      it("should not be a new record", function(){ expect(user.newRecord).toBe(false); })
     })
 
-    it("should be a new record", function() {
-      expect(user.newRecord).toBeDefined();
-      expect(user.newRecord).toBe(true);
-    });
+    describe("#save", function(){
+      beforeEach(function(){ user.save(); })
+      it("should not be a new record", function(){ expect(user.newRecord).toBe(false); })
+    })
+
+    describe("#update", function(){
+      beforeEach(function(){})
+    })
   })
 });

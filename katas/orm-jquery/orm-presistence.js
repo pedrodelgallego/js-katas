@@ -2,16 +2,25 @@
 Model.records = {}
 
 Model.include({
-  newRecord: true, 
+  newRecord: true,
 
   create: function(){
     if ( !this.id ) this.id = Math.guid();
     this.newRecord = false;
     this.parent.records[this.id] = this;
+  },
+
+  update: function(){
+    this.newRecord = false;
+    this.parent.records[this.id] = this;
+  },
+
+  save: function(){
+    this.newRecord ? this.create() : this.update();
   }
 })
 
-// Id generator 
+// Id generator
 // see http://www.broofa.com/2008/09/javascript-uuid-function/
 Math.guid = function(){
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
