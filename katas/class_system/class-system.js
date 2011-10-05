@@ -7,7 +7,6 @@
   instances system. JavaScript is a prototype language, and as such
   doesn’t include a native class implementation.
 */
-
 var Class = function(parent){
   var klass = function(){
     this.init.apply(this, arguments);
