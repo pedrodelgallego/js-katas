@@ -1,10 +1,6 @@
 /*
-  Preliminary concepts, such as JavaScript classes and events. This
-  will give me a solid foundation before moving on to some of the
-  more advanced concepts.
-
-  We are going to create classical classes with inheritance and
-  instances system. JavaScript is a prototype language, and as such
+  We are going to create classical classes system with inheritance,
+  classes and instances. JavaScript is a prototype language, and as such
   doesn’t include a native class implementation.
 */
 var Class = function(parent){
