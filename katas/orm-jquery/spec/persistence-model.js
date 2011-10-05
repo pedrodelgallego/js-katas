@@ -30,5 +30,14 @@ describe("Persistence", function(){
     describe("#update", function(){
       beforeEach(function(){})
     })
+
+    describe("#find", function(){
+      var john;
+      beforeEach(function(){
+        user.create();
+        john = User.find(user.id);
+      })
+      it("should find the correct record", function(){ expect(user.id).toBe(john.id); })
+    })
   })
 });

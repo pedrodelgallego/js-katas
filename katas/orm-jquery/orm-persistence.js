@@ -20,6 +20,12 @@ Model.include({
   }
 })
 
+Model.extend({
+  find: function(id){
+    return this.records[id]
+  }
+})
+
 // Id generator
 // see http://www.broofa.com/2008/09/javascript-uuid-function/
 Math.guid = function(){
