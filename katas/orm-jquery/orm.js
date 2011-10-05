@@ -23,7 +23,7 @@ var Model = {
 
   // The create() function returns a new object, inheriting from the
   // Model object; we’ll use this for creating new models. The init()
-  // function returns a new object, inheriting from Model.prototype 
+  // function returns a new object, inheriting from Model.prototype
   create: function(){
     var object = Object.create(this);
     object.parent = this;
@@ -44,5 +44,11 @@ var Model = {
     var extended = o.extended;
     jQuery.extend(this, o);
     if (extended) extended(this);
+  },
+
+  include: function(o){
+    var included = o.included;
+    jQuery.extend(this.prototype, o);
+    if (included) included(this);
   }
 };

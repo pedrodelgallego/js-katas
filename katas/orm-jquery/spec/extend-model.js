@@ -1,4 +1,4 @@
-describe("Class.extend", function() {
+describe("Model.extend", function() {
   var User;
   beforeEach(function(){
     User = Model.create();
