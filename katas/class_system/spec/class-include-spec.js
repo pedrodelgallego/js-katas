@@ -1,4 +1,4 @@
-describe("Class.extend", function() {
+describe("Class.include", function() {
   var user;
   beforeEach(function(){
     var User = new Class;

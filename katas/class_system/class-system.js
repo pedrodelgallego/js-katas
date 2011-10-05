@@ -43,7 +43,7 @@ var Class = function(parent){
   // var person = Person.find(1);
   klass.extend = function(obj){
     var extended = obj.extended;
-    // copy each property into the
+    // copy each property into the class
     for(var i in obj){
       klass[i] = obj[i];
     }
@@ -65,7 +65,8 @@ var Class = function(parent){
   // var person = new Person;
   // person.save();
   klass.include = function(obj){
-    var included = obj.included;
+    var included = obj.included;    
+    // copy each property into the prototype
     for(var i in obj){
       klass.fn[i] = obj[i];
     }
