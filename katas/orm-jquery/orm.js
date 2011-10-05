@@ -38,5 +38,11 @@ var Model = {
     instance.parent = this;
     instance.init.apply(instance, arguments);
     return instance;
+  },
+
+  extend: function(o){
+    var extended = o.extended;
+    jQuery.extend(this, o);
+    if (extended) extended(this);
   }
 };
