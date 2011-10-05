@@ -25,10 +25,24 @@ describe("Persistence", function(){
     describe("#save", function(){
       beforeEach(function(){ user.save(); })
       it("should not be a new record", function(){ expect(user.newRecord).toBe(false); })
+
+      it("should update the record", function(){
+        user.name = "john";
+        user.update();
+        name = User.find(user.id).name
+        expect(name).toBe("john");
+      })
     })
 
     describe("#update", function(){
-      beforeEach(function(){})
+      beforeEach(function(){
+        user.name = "john";
+        user.update();
+      })
+      it("should update the record", function(){
+        name = User.find(user.id).name
+        expect(name).toBe("john");
+      })
     })
 
     describe("#find", function(){
