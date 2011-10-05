@@ -52,3 +52,14 @@ var Model = {
     if (included) included(this);
   }
 };
+
+Model.include({
+  init: function(atts) {
+    if (atts) this.load(atts);
+  },
+
+  load: function(attributes){
+    for(var name in attributes)
+      this[name] = attributes[name];
+  }
+})
