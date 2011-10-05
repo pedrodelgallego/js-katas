@@ -1,8 +1,6 @@
 describe("Persistence", function(){
   var User;
-  beforeEach(function(){
-    User = Model.create();
-  })
+  beforeEach(function(){ User = Model.create(); })
 
   describe("Class", function(){
     it("should be empty", function(){ expect(User.records).toEqual({}); });
@@ -47,11 +45,29 @@ describe("Persistence", function(){
 
     describe("#find", function(){
       var john;
-      beforeEach(function(){
-        user.create();
+      beforeEach(function(){ user.create();  })
+      it("should find the correct record", function(){
         john = User.find(user.id);
+        expect(user.id).toBe(john.id);
       })
-      it("should find the correct record", function(){ expect(user.id).toBe(john.id); })
+    })
+
+    describe("Duplicate the records", function(){
+      it("should find the correct record", function(){
+        user.save();
+        user.name = "john"
+        expect(User.find(user.id).name).toBe("John Doe");
+      })
+    })
+
+    describe("Insolate records", function(){
+      var Task;
+      beforeEach(function(){ Task = Model.create(); })
+      it("should find the correct record", function(){
+        task = Task.init();
+        task.save()
+        expect(User.records).not.toEqual(Task.records);
+      })
     })
   })
 });

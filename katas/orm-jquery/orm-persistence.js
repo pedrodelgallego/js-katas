@@ -1,4 +1,10 @@
 // Empty collection of instances
+Model.extend({
+  created: function(){
+    this.records = {};
+  }
+});
+
 Model.records = {}
 
 Model.include({
@@ -7,22 +13,27 @@ Model.include({
   create: function(){
     if ( !this.id ) this.id = Math.guid();
     this.newRecord = false;
-    this.parent.records[this.id] = this;
+    this.parent.records[this.id] = this.dup();
   },
 
   update: function(){
     this.newRecord = false;
-    this.parent.records[this.id] = this;
+    this.parent.records[this.id] = this.dup();
   },
 
   save: function(){
     this.newRecord ? this.create() : this.update();
+  },
+
+  dup: function(){
+    return jQuery.extend(true, {}, this);
   }
 })
 
 Model.extend({
   find: function(id){
-    return this.records[id]
+    var record = this.records[id]
+    return record.dup();
   }
 })
 
