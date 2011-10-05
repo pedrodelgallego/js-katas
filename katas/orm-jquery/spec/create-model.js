@@ -14,7 +14,7 @@ describe("Create model", function() {
     });
   })
 
-  describe("Instances", function(){
+  describe("Class", function(){
     it("A Class can create new instances", function() {
       expect(User.init).toBeDefined();
     });
