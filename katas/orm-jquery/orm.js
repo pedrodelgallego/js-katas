@@ -41,14 +41,16 @@ var Model = {
   },
 
   extend: function(o){
+    var extend = Object.extend || $.extend;
     var extended = o.extended;
-    jQuery.extend(this, o);
+    extend(this, o);
     if (extended) extended(this);
   },
 
   include: function(o){
+    var extend = Object.extend || $.extend;
     var included = o.included;
-    jQuery.extend(this.prototype, o);
+    extend(this.prototype, o);
     if (included) included(this);
   }
 };
