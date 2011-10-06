@@ -71,3 +71,17 @@ describe("Persistence", function(){
     })
   })
 });
+
+describe("Populate", function(){
+  var User, users;
+  beforeEach(function(){
+    User = Model.create();
+    users = JSON.parse(Fixtures.loadUsers.success.responseText).users
+    spyOn(User, "init").andReturn(User.create());
+  })
+
+  it("calls onSuccess when requesting data", function() {
+    User.populate(users)
+    expect(User.init.callCount).toBe(2)
+  });
+})

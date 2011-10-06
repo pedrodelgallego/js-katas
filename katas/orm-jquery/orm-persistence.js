@@ -30,12 +30,26 @@ Model.include({
   }
 })
 
+// Finders
 Model.extend({
   find: function(id){
     var record = this.records[id]
     return record.dup();
   }
 })
+
+Model.extend({
+  populate: function(values){
+    // Reset model & records
+    this.records = {};
+
+    for (var i=0, length = values.length; i < length; i++) {
+      var record = this.init(values[i]);
+      record.newRecord = false;
+      this.records[record.id] = record;
+    }
+  }
+});
 
 // Id generator
 // see http://www.broofa.com/2008/09/javascript-uuid-function/
